@@ -28,10 +28,23 @@ const ProductList = () => {
         console.log(result);
         getProducts();
     }
+
+    const searchHandle = async(event)=>{
+        let key = event.target.value;
+        if(key){
+
+            let result = await fetch(`http://localhost:5000/search/${key}`);
+            result = await result.json();
+            setProducts(result);
+        }else{
+            getProducts();
+        }
+    }
   return (
 
     <div>
         <div className="heading text-center m-5 font-bold text-[28px] text-indigo-700">Product List</div>
+        <input type="text" onChange={searchHandle} placeholder='search product' className='block w-[50%] border-2 border-indigo-600 focus:outline-none focus:border-indigo-900 rounded-md p-2 mx-auto'/>
      <div className="tableview mt-10">
         <div className="headingrow flex text-center w-[90%] mx-auto border-[1px] border-indigo-700 font-bold ">
             <div className="Name w-[10%] border-[1px] border-indigo-700 p-1">Sr.No</div>
@@ -41,7 +54,7 @@ const ProductList = () => {
             <div className="Category flex-1 border-[1px] border-indigo-700 p-1">Category</div>
             <div className="Name flex-1 border-[1px] border-indigo-700 p-1">Operation</div>
         </div>
-        {products.map((item,index)=>(
+        {products.length>0 ? products.map((item,index)=>(
 
         <div className="contentrow flex text-center w-[90%] mx-auto border-[1px] border-indigo-700 capitalize mb-1">
             <div className="Name w-[10%]  border-[1px] border-indigo-700 p-1">{index+1}</div>
@@ -55,7 +68,9 @@ const ProductList = () => {
                 <Link to={`/update/${item._id}`} className='bg-green-600 px-2 py-1 text-white rounded-md hover:bg-green-400 inline-block'>Update</Link>
                 </div>
         </div>
-        ))}
+        )):
+        <div className='font-bold text-center mt-8'>No result found</div>
+        }
      </div>
     </div>
   )

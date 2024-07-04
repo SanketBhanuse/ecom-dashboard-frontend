@@ -17,7 +17,7 @@ const Navbar = () => {
       <ul className='flex gap-5 font-bold uppercase items-center'>
         <Link to="/">Products</Link>
         <Link to="/add">Add Product</Link>
-        <Link to="/update">update product</Link>
+        {/* <Link to="/update">update product</Link> */}
         <Link to="/profile">profile</Link>
         <Link onClick={logout}  className='border-white border-2 p-1 rounded-[5px] cursor-pointer hover:bg-white hover:text-black hover:border-black ml-auto'>logout</Link> 
       </ul>

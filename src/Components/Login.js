@@ -32,14 +32,14 @@ const Login =()=>{
     return(
         <div className='flex justify-center items-center'>
         <div className="contentWrapper w-[40%]">
-          <div action=""  className=" flex flex-col gap-2">
+          <div   className=" flex flex-col gap-2">
 
             <h1 className='text-center font-bold text-[28px] text-blue-600'>Login Form</h1>
             <label htmlFor="email">Email</label>
             <input className=' border-2 border-gray-500 rounded-[5px] p-1 w-full' required name='email' type="email" placeholder='Enter Email'  onChange={(e)=>{setEmail(e.target.value)}} />
             <label htmlFor="password">Password</label>
             <input className=' border-2 border-gray-500 rounded-[5px] p-1 w-full' required name='password' type="password" placeholder='Enter Password'  onChange={(e)=>{setPassword(e.target.value)}}  />
-            <button  className=''  onClick={handleLogin}>Submit</button>
+            <button  className='bg-indigo-700 px-5 py-2 inline-block w-fit text-white ml-auto rounded-md hover:bg-indigo-400 hover:text-black font-bold mt-4'  onClick={handleLogin}>Submit</button>
           </div>
         </div>
     </div>

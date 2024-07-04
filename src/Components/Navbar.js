@@ -3,20 +3,23 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const auth = localStorage.getItem("user");
-  const navigate = useNavigate();
+  const navigate =  useNavigate();
+  
   const logout = () => {
     localStorage.removeItem("user");
-    navigate('/signup')
-  }
+    setTimeout(() => {
+      navigate('/signup');
+    }, 10);
+  };
   return (
     <div className=' bg-indigo-700 p-2  text-white '>
        {auth ? 
       <ul className='flex gap-5 font-bold uppercase items-center'>
-        <Link to="/">home</Link>
+        <Link to="/">Products</Link>
         <Link to="/add">Add Product</Link>
         <Link to="/update">update product</Link>
         <Link to="/profile">profile</Link>
-        <Link onClick={logout} to="/logout" className='border-white border-2 p-1 rounded-[5px] cursor-pointer hover:bg-white hover:text-black hover:border-black ml-auto'>logout</Link> 
+        <Link onClick={logout}  className='border-white border-2 p-1 rounded-[5px] cursor-pointer hover:bg-white hover:text-black hover:border-black ml-auto'>logout</Link> 
       </ul>
       :
       <div className='rightNav flex gap-2 items-center justify-end text-right w-full'>

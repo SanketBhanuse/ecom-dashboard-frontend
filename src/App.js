@@ -5,6 +5,9 @@ import Footer from './Components/Footer';
 import SignUp from './Components/SignUp';
 import PrivateComponent from './Components/PrivateComponent';
 import Login from './Components/Login';
+import AddProduct from './Components/AddProduct';
+import ProductList from './Components/ProductList';
+import UpdateProduct from './Components/UpdateProduct';
 function App() {
   return (
     <div className="App">
@@ -12,10 +15,9 @@ function App() {
         <Navbar />
         <Routes className=''>
           <Route element={<PrivateComponent />}>
-            <Route path='/' element={<h1 className='text-[20px] font-bold'>product listing component</h1>} />
-            <Route path='/add' element={<h1 className='text-[20px] font-bold'>add product component</h1>} />
-            <Route path='/update' element={<h1 className='text-[20px] font-bold'>update product component</h1>} />
-            <Route path='/logout' element={<h1 className='text-[20px] font-bold'>logout component</h1>} />
+            <Route path='/' element={<ProductList/>} />
+            <Route path='/add' element={<AddProduct/>} />
+            <Route path='/update/:id' element={<UpdateProduct/>} />
             <Route path='/profile' element={<h1 className='text-[20px] font-bold'>profile component</h1>} />
           </Route>
           <Route path='/signup' element={<SignUp />} />

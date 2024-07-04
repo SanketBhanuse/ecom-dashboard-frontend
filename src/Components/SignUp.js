@@ -41,7 +41,7 @@ const SignUp = () => {
             <label htmlFor="password">Password</label>
             <input className='inputbox border-2 border-gray-500 rounded-[5px] p-1 w-full' required name='password' type="password" placeholder='Enter Password'  onChange={(e)=>{setPassword(e.target.value)}}  />
 
-            <button onClick={getData} className=''  >Submit</button>
+            <button onClick={getData} className='bg-indigo-700 px-5 py-2 inline-block w-fit text-white ml-auto rounded-md hover:bg-indigo-400 hover:text-black font-bold mt-4' >Submit</button>
           </div>
         </div>
     </div>

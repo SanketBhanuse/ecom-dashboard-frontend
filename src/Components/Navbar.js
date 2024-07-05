@@ -19,7 +19,7 @@ const Navbar = () => {
         <Link to="/add">Add Product</Link>
         {/* <Link to="/update">update product</Link> */}
         <Link to="/profile">profile</Link>
-        <Link onClick={logout}  className='border-white border-2 p-1 rounded-[5px] cursor-pointer hover:bg-white hover:text-black hover:border-black ml-auto'>logout</Link> 
+        <Link onClick={logout}  className='border-white border-2 p-1 rounded-[5px] cursor-pointer hover:bg-white hover:text-black hover:border-black ml-auto'>logout </Link> 
       </ul>
       :
       <div className='rightNav flex gap-2 items-center justify-end text-right w-full'>

@@ -15,16 +15,20 @@ const UpdateProduct = () => {
 
 
     const getData = async ()=>{
-        let result = await fetch("http://localhost:5000/product/"+param.id);
+        let result = await fetch("http://localhost:5000/product/"+param.id,{
+            headers:{
+                authorization: `baerer ${JSON.parse(localStorage.getItem('Token'))}`
+            }
+        });
         result = await result.json();
-        console.log(result);
+        // console.log(result);
        setName(result.name);
        setPrice(result.price);
        setCategory(result.category);
        setCompany(result.company);
     }
     const updateProduct = async () => {
-        console.log(name,price,category,company);
+        // console.log(name,price,category,company);
 
         let result = await fetch("http://localhost:5000/product/"+param.id,{
             method:"put",
@@ -35,7 +39,8 @@ const UpdateProduct = () => {
                 company: company
             }),
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                    authorization: `baerer ${JSON.parse(localStorage.getItem('Token'))}`
             }
         })
         result = await result.json();
@@ -45,7 +50,7 @@ const UpdateProduct = () => {
         }else{
             alert("something went wrong")
         }
-        console.log(name,price,category,company);
+        // console.log(name,price,category,company);
     }
 
 

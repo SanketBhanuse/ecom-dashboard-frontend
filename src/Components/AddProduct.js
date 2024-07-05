@@ -16,17 +16,18 @@ const AddProduct = () => {
         }
         let userId = JSON.parse(localStorage.getItem("user"))._id;
 
-        let result = await fetch(`${URL}/add-product`, {
-        // let result = await fetch("http://localhost:5000/add-product", {
+        let result = await fetch("http://localhost:5000/add-product", {
             method: "post",
             body: JSON.stringify({ name, price, category, company, userId }),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                authorization: `baerer ${JSON.parse(localStorage.getItem('Token'))}`
+                
             }
         });
 
-        result = await result.json();
-        console.log(result)
+        // result = await result.json();
+        // console.log(result)
         Navigate('/');
 
     }

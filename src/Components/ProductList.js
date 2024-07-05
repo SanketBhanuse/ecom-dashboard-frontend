@@ -9,23 +9,31 @@ const ProductList = () => {
     }, []);
 
     const getProducts = async ()=>{
-        let result = await fetch("http://localhost:5000/products");
+        let result = await fetch("http://localhost:5000/products",{
+            headers:{
+                authorization: `baerer ${JSON.parse(localStorage.getItem('Token'))}`
+            }
+        });
+
         result = await result.json();
         setProducts(result);
        
        
     }
-    console.log(products)
+    // console.log(products)
 
     const deleteRecord = async(id)=>{
         let result = await fetch(`http://localhost:5000/delete/${id}`,{
-            method:"Delete"
+            method:"Delete",
+            headers:{
+                authorization: `baerer ${JSON.parse(localStorage.getItem('Token'))}`
+            }
         })
         result = result.json();
         if(result){
             alert("record is deleted");
         }
-        console.log(result);
+        // console.log(result);
         getProducts();
     }
 
@@ -33,7 +41,11 @@ const ProductList = () => {
         let key = event.target.value;
         if(key){
 
-            let result = await fetch(`http://localhost:5000/search/${key}`);
+            let result = await fetch(`http://localhost:5000/search/${key}`,{
+                headers:{
+                    authorization: `baerer ${JSON.parse(localStorage.getItem('Token'))}`
+                }
+            });
             result = await result.json();
             setProducts(result);
         }else{
@@ -56,7 +68,7 @@ const ProductList = () => {
         </div>
         {products.length>0 ? products.map((item,index)=>(
 
-        <div className="contentrow flex text-center w-[90%] mx-auto border-[1px] border-indigo-700 capitalize mb-1">
+        <div key={item._id} className="contentrow flex text-center w-[90%] mx-auto border-[1px] border-indigo-700 capitalize mb-1">
             <div className="Name w-[10%]  border-[1px] border-indigo-700 p-1">{index+1}</div>
 
             <div className="Name flex-1 border-[1px] border-indigo-700 p-1">{item.name}</div>

@@ -13,17 +13,18 @@ const SignUp = () => {
     }
   })
   const getData = async()=>{
-    console.log(name, email, password);
+    // console.log(name, email, password);
     let result = await fetch('http://localhost:5000/signup',{
       method:'post',
       body: JSON.stringify({name, email, password}),
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
       },
     })
      result = await result.json();
-    console.log(result);
-    localStorage.setItem("user",JSON.stringify(result));
+    // console.log(result);
+    localStorage.setItem("user",JSON.stringify(result.result));
+    localStorage.setItem("Token",JSON.stringify(result.auth));
     navigate("/")
   }
 
